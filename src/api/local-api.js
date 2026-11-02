@@ -26,22 +26,13 @@ class LocalAPI {
     this.info = Object.assign({}, this.info, info);
   }
 
-  checkNet() {
-    const url = `${this.server}/api/ping/`;
+  getUserInfo(email) {
+    const url = `${this.server}/api/user?email=${encodeURIComponent(email)}`;
     return this.req.get(url);
   }
 
-  login(email, password) {
-    const url = `${this.server}/api/login`;
-    const options = {
-      email,
-      password,
-    };
-    return this.req.post(url, options);
-  }
-
-  getUserInfo(email) {
-    const url = `${this.server}/api/user?email=${email}`;
+  checkNet() {
+    const url = `${this.server}/api/ping/`;
     return this.req.get(url);
   }
 

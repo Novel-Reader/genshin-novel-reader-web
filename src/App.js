@@ -13,7 +13,6 @@ import { DEFAULT_STYLE, PAGES, PARAGRAPHS } from "./utils/constants";
 import { AppContext } from "./context";
 import toaster from "./common/toast";
 import File from './model/file';
-import LoginDialog from "./dialog/login-dialog";
 
 import "./locale/index.js";
 import "./css/App.less";
@@ -32,7 +31,6 @@ const App = ({
   const [currentPageIndex, setCurrentPageIndex] = useState(0);
   const [api, setApi] = useState(null);
   const [user, setUser] = useState(null);
-  const [isShowLoginDialog, setIsShowLoginDialog] = useState(false);
   
   const initDataFromLocalStore = useCallback(() => {
     getLocalValue(NOVEL_READER_STYLE_SAVE_KEY).then((localStyleStr) => {
@@ -48,11 +46,6 @@ const App = ({
 
   const initFromServer = useCallback(async () => {
     const username = Cookies.get("username");
-    if (!username) {
-      toaster.warning(intl.get('Please login first'));
-      setIsShowLoginDialog(true);
-      return false;
-    }
     const newApi = new LocalAPI();
     newApi.init({
       server: server,
@@ -60,48 +53,33 @@ const App = ({
     });
 
     try {
-      const userResponse = await newApi.getUserInfo(username);
-      const userInfo = userResponse.data[0];
-      if (!userInfo) {
-        throw new Error('User account was not returned by the server');
+      if (username) {
+        const userResponse = await newApi.getUserInfo(username);
+        const userInfo = userResponse.data[0];
+        if (!userInfo) throw new Error('User account was not returned by the server');
+        newApi.setUserInfo({ user_id: userInfo.id, username });
+        const booksResponse = await newApi.getUserBookList(userInfo.id);
+        let fileList = booksResponse.data.map(file => new File(file));
+        if (fileList.length === 0) {
+          fileList = loadExample().map((file) =>
+            Object.assign(new File(file), parseNovel(file.detail))
+          );
+        }
+        setUser(userInfo);
+        setFiles(fileList);
+        setCurrentFileIndex(0);
+        setCurrentFile(fileList[0]);
       }
-      newApi.setUserInfo({ user_id: userInfo.id, username });
-      const booksResponse = await newApi.getUserBookList(userInfo.id);
-      let fileList = booksResponse.data;
-      if (fileList.length === 0) {
-        const examples = loadExample();
-        fileList = examples.map((file) => {
-          return Object.assign(new File(file), parseNovel(file.detail));
-        });
-      } else {
-        fileList = fileList.map(file => new File(file));
-      }
-
-      setUser(userInfo);
-      setFiles(fileList);
-      setCurrentFileIndex(0);
-      setCurrentFile(fileList[0]);
       setApi(newApi);
       return true;
     } catch (err) {
       console.log(err);
       setApi(null);
       setUser(null);
-      toaster.warning(intl.get('Please login first'));
-      setIsShowLoginDialog(true);
+      toaster.danger(intl.get('Error, please try again'));
       return false;
     }
   }, [server]);
-
-  const closeLoginDialog = useCallback(() => {
-    setIsShowLoginDialog(false);
-  }, []);
-
-  const handleLoginSuccess = useCallback(async () => {
-    if (await initFromServer()) {
-      setIsShowLoginDialog(false);
-    }
-  }, [initFromServer]);
 
   const onKeydown = useCallback((e) => {
     if (isUp(e)) {
@@ -129,11 +107,7 @@ const App = ({
 
   useEffect(() => {
     if (mode === "online") {
-      if (!Cookies.get("username")) {
-        setIsShowLoginDialog(true);
-      } else {
-        initFromServer();
-      }
+      initFromServer();
     } else {
       toaster.success(intl.get("Welcome_to_use_offline_mode"));
     }
@@ -250,9 +224,6 @@ const App = ({
           changeMode={changeMode}
         />
       </div>
-      {isShowLoginDialog && (
-        <LoginDialog onClose={closeLoginDialog} onLoginSuccess={handleLoginSuccess} server={server}/>
-      )}
     </AppContext.Provider>
   );
 };

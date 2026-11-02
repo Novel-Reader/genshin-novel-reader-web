@@ -42,8 +42,7 @@ const LoadFromServer = (props) => {
     }
     api.getNovelDetail(book_id).then((res) => {
       addFile(new File(res.data[0]));
-      api.updateUserBook(user.id, book_id).then(() => {
-      });
+      api.updateUserBook(user.id, book_id).then(() => {});
     }).catch((err) => {
       toaster.danger(err);
     });
