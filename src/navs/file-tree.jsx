@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import classnames from "classnames";
 import intl from "react-intl-universal";
 import { BsListTask } from "react-icons/bs";
-import { Dropdown, Menu, Button } from 'antd';
+import { Dropdown, Button } from 'antd';
 import FileInfoDialog from './file-info-dialog';
 
 function FileTree({ file, index, currentFileIndex, searchValue, changeFileIndex, deleteFile }) {

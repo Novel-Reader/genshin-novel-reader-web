@@ -1,8 +1,9 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import eslint from 'vite-plugin-eslint'
 
 const basicConfig = {
-  plugins: [react()],
+  plugins: [react(), eslint({ include: ['src/**/*.{js,jsx}'], lintOnStart: true })],
   esbuild: {
     loader: 'jsx',
     include: /\.[jt]sx?$/,
