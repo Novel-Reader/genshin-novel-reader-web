@@ -77,6 +77,7 @@ const en = {
   'This is already the last page': 'これはすでに最後のページです',
   'Information': '情報',
   'Export as TXT': 'TXT としてエクスポート',
+  'Export as PDF': 'PDF としてエクスポート',
   'Paragraph not found, Paragraph mode not supported': '段落が見つかりません。段落モードはサポートされていません',
   'Close': '閉じる',
   'Submit': '送信',

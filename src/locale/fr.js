@@ -78,6 +78,7 @@ const en = {
   'This is already the last page': 'Ceci est déjà la dernière page',
   'Information': 'Information',
   'Export as TXT': 'Exporter en TXT',
+  'Export as PDF': 'Exporter en PDF',
   'Paragraph not found, Paragraph mode not supported': 'Paragraphe introuvable, Mode paragraphe non pris en charge',
   'Close': 'Fermer',
   'Submit': 'Soumettre',

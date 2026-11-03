@@ -77,6 +77,7 @@ const en = {
   'This is already the last page': 'Dies ist bereits die letzte Seite',
   'Information': 'Informationen',
   'Export as TXT': 'Als TXT exportieren',
+  'Export as PDF': 'Als PDF exportieren',
   'Paragraph not found, Paragraph mode not supported': 'Absatz nicht gefunden, Absatz Modus wird nicht unterstützt',
   'Close': 'Schließen',
   'Submit': 'Absenden',

@@ -5,7 +5,7 @@ import intl from "react-intl-universal";
 import { BsListTask } from "react-icons/bs";
 import { Dropdown, Button } from 'antd';
 import FileInfoDialog from './file-info-dialog';
-import { exportTxtFile } from '../utils';
+import { exportPdfFile, exportTxtFile } from '../utils';
 
 function FileTree({ file, index, currentFileIndex, searchValue, changeFileIndex, deleteFile }) {
 
@@ -44,6 +44,11 @@ function FileTree({ file, index, currentFileIndex, searchValue, changeFileIndex,
             },
             {
               key: '3',
+              label: intl.get('Export as PDF'),
+              onClick: () => exportPdfFile(file),
+            },
+            {
+              key: '4',
               label: intl.get('Delete'),
               onClick: () => deleteFile(index),
             },
