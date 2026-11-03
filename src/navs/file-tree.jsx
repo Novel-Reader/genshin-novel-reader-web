@@ -5,6 +5,7 @@ import intl from "react-intl-universal";
 import { BsListTask } from "react-icons/bs";
 import { Dropdown, Button } from 'antd';
 import FileInfoDialog from './file-info-dialog';
+import { exportTxtFile } from '../utils';
 
 function FileTree({ file, index, currentFileIndex, searchValue, changeFileIndex, deleteFile }) {
 
@@ -12,6 +13,7 @@ function FileTree({ file, index, currentFileIndex, searchValue, changeFileIndex,
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const isActive = currentFileIndex === index;
+
   if (searchValue && !file.name.includes(searchValue)) {
     return null;
   }
@@ -37,6 +39,11 @@ function FileTree({ file, index, currentFileIndex, searchValue, changeFileIndex,
             },
             {
               key: '2',
+              label: intl.get('Export as TXT'),
+              onClick: () => exportTxtFile(file),
+            },
+            {
+              key: '3',
               label: intl.get('Delete'),
               onClick: () => deleteFile(index),
             },

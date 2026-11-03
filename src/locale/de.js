@@ -76,6 +76,7 @@ const en = {
   'This is already the first page': 'Dies ist bereits die erste Seite',
   'This is already the last page': 'Dies ist bereits die letzte Seite',
   'Information': 'Informationen',
+  'Export as TXT': 'Als TXT exportieren',
   'Paragraph not found, Paragraph mode not supported': 'Absatz nicht gefunden, Absatz Modus wird nicht unterstützt',
   'Close': 'Schließen',
   'Submit': 'Absenden',

@@ -74,6 +74,7 @@ const en = {
   'This is already the first page': 'This is already the first page',
   'This is already the last page': 'This is already the last page',
   'Information': 'Information',
+  'Export as TXT': 'Export as TXT',
   'Paragraph not found, Paragraph mode not supported': 'Paragraph not found, Paragraph mode not supported',
   'Close': 'Close',
   'Submit': 'Submit',

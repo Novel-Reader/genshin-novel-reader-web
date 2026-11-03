@@ -77,6 +77,7 @@ const en = {
   'This is already the first page': 'Ceci est déjà la première page',
   'This is already the last page': 'Ceci est déjà la dernière page',
   'Information': 'Information',
+  'Export as TXT': 'Exporter en TXT',
   'Paragraph not found, Paragraph mode not supported': 'Paragraphe introuvable, Mode paragraphe non pris en charge',
   'Close': 'Fermer',
   'Submit': 'Soumettre',

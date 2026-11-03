@@ -74,6 +74,7 @@ const en = {
   'This is already the first page': '这已经是第一页',
   'This is already the last page': '这已经是最后一页',
   'Information': '信息',
+  'Export as TXT': '导出为 TXT',
   'Paragraph not found, Paragraph mode not supported': '找不到段落，不支持段落模式',
   'Close': '关闭',
   'Submit': '提交',

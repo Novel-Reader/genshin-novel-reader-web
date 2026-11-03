@@ -1,5 +1,6 @@
 import exampleObj from "./example.json";
 import File from '../model/file';
+import { PARAGRAPHS } from './constants';
 
 /**
  * parse text file to html dom
@@ -79,6 +80,20 @@ const isMobile = () => {
   return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 }
 
+const exportTxtFile = (file) => {
+  const content = Array.isArray(file.detail) ? file.detail.join(file.type === PARAGRAPHS ? '\n\n' : '') : file.detail;
+  if (typeof content !== 'string') return;
+  const filename = (file.name || 'novel').replace(/[<>:"/\\|?*]/g, '_').split('').map((c) => c.charCodeAt(0) < 32 ? '_' : c).join('');
+  const url = URL.createObjectURL(new Blob([content], { type: 'text/plain;charset=utf-8' }));
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = `${filename}.txt`;
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 0);
+};
+
 export {
   parseTxtToHTML,
   isSameObject,
@@ -86,4 +101,5 @@ export {
   loadExample,
   generatorBase64Code,
   isMobile,
+  exportTxtFile,
 };
