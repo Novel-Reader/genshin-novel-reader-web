@@ -1,5 +1,9 @@
 # 原神背景小说阅读器 Genshin Novel Reader
 
+## 项目声明与许可证
+
+本项目是粉丝制作项目，与米哈游及《原神》官方无关，也未获其认可或赞助。本项目没有商业推广的需求。仓库中的 MIT License 仅适用于作者有权授权的项目原创代码和文档，不涵盖米哈游或第三方拥有的商标、素材、代码及其他内容；这些内容仍受各自权利和许可约束。MIT License 允许他人在遵守许可证条件的前提下商业使用受其覆盖的内容；本项目没有商业推广需求的说明，不会限制该许可证授予的权利。详见仓库根目录的 `LICENSE` 文件。
+
 ## 案例 Demo
 
 [在线案例](https://michael18811380328.github.io/novel-demo/index.html)
@@ -77,4 +81,3 @@ const server = "127.0.0.1:8081"
 后端代码 https://github.com/Novel-Reader/Genshin-novel-reader-express-server
 
 同时支持了前端 typescript 版本 https://github.com/Novel-Reader/novel-reader-ts
-
