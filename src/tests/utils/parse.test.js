@@ -3,9 +3,9 @@ import {
   convertNovel2Paragraph,
   checkParaGraph,
   parseNovel,
-} from "../../utils/parse";
-import { loadExample } from "../../utils/index";
-import { PAGES, PARAGRAPHS } from "../../utils/constants";
+} from "../../shared/utils/parse";
+import { loadExample } from "../../shared/utils";
+import { PAGES, PARAGRAPHS } from "../../shared/utils/constants";
 
 const files = loadExample();
 

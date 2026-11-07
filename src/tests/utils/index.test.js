@@ -1,4 +1,4 @@
-import { isSameObject } from "../../utils/index";
+import { isSameObject } from "../../shared/utils";
 
 test("common utils function", () => {
   expect(isSameObject(null, null)).toBe(false);

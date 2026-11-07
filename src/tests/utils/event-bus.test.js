@@ -1,4 +1,4 @@
-import EventBus from "../../utils/event-bus";
+import EventBus from "../../shared/utils/event-bus";
 
 test("event bus", () => {
   let eventBus = new EventBus();

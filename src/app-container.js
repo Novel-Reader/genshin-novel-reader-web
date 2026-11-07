@@ -4,9 +4,9 @@ import intl from 'react-intl-universal';
 import { ConfigProvider } from "antd";
 import enUS from 'antd/locale/en_US';
 import App from "./App";
-import antdLocales from './locale/antd-locales';
+import antdLocales from './shared/i18n/antd-locales';
 
-import "./css/common.less";
+import "./shared/styles/common.less";
 
 const lang = Cookies.get("lang") || "en";
 

@@ -1,21 +1,21 @@
 import React, { useState, useEffect, useCallback } from "react";
 import Cookies from 'js-cookie';
 import intl from "react-intl-universal";
-import MainPanel from "./main-panel";
-import Navs from "./navs";
-import Settings from "./settings";
-import LocalAPI from "./api/local-api";
-import { isSameObject, loadExample, isMobile } from "./utils";
-import { getLocalValue, setLocalValue, NOVEL_READER_STYLE_SAVE_KEY } from "./utils/store";
-import { isUp, isDown } from "./utils/hotkey";
-import { convertNovel2Pages, convertNovel2Paragraph, checkParaGraph, parseNovel } from "./utils/parse";
-import { DEFAULT_STYLE, PAGES, PARAGRAPHS } from "./utils/constants";
+import MainPanel from "./features/main-panel";
+import Navs from "./features/navs";
+import Settings from "./features/settings";
+import LocalAPI from "./shared/api/local-api";
+import { isSameObject, loadExample, isMobile } from "./shared/utils";
+import { getLocalValue, setLocalValue, NOVEL_READER_STYLE_SAVE_KEY } from "./shared/utils/store";
+import { isUp, isDown } from "./shared/utils/hotkey";
+import { convertNovel2Pages, convertNovel2Paragraph, checkParaGraph, parseNovel } from "./shared/utils/parse";
+import { DEFAULT_STYLE, PAGES, PARAGRAPHS } from "./shared/utils/constants";
 import { AppContext } from "./context";
-import toaster from "./common/toast";
-import File from './model/file';
+import toaster from "./shared/components/toast";
+import File from './shared/model/file';
 
-import "./locale/index.js";
-import "./css/App.less";
+import "./shared/i18n/index.js";
+import "./shared/styles/App.less";
 
 const App = ({ 
   mode = 'offline',

@@ -54,7 +54,7 @@ for (let j = 0; j < res.length; j++) {
 }
 
 // 3. Find the json file and parse the existing translations
-let target_path = './src/locale/en.js';
+let target_path = './src/shared/i18n/en.js';
 let target_dict = {};
 let detail = fs.readFileSync(target_path, 'utf-8');
 let arr = detail.split('\n');
