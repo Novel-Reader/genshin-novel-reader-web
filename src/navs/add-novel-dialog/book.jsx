@@ -6,15 +6,6 @@ import { FaRegCommentDots } from "react-icons/fa";
 import BookDetailDialog from "../book-detail-dialog";
 import { AppContext } from "../../context";
 
-const getRandomLightColor = () => {
-  const letters = 'ABCDEF';
-  let color = '#';
-  for (let i = 0; i < 3; i++) {
-    color += letters[Math.floor(Math.random() * 6)];
-  }
-  return color;
-};
-
 function Book(props) {
   const [showDetail, setShowDetail] = useState(false);
   const { isMobile } = useContext(AppContext);
@@ -35,8 +26,7 @@ function Book(props) {
         </p>
         <div className="book-right-tags">
           {tag && tag.replace(/\n/gi, '').split(',').map((item, index) => (
-            item.trim() &&
-            <span className="book-right-tag" key={index} style={{ backgroundColor: getRandomLightColor() }}>{item}</span>
+            <span className="book-right-tag" key={index}>{item}</span>
           ))}
         </div>
         <div className="book-right-price">
